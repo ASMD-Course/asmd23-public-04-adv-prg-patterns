@@ -1,6 +1,8 @@
 package u04.typeclasses
 import u04.datastructures.Sequences.*
 
+import scala.::
+
 object Showables:
   // the Showable type class  
   trait Showable[T]:
@@ -35,6 +37,10 @@ object ShowableGivenInstances:
     def show(s: Student): String = s match
       case Student(n, i) => "stud("+ n.show() + ", " + i.show()+")"
 
+  given [A: Showable]: Showable[List[A]] with
+    def show(lst: List[A]): String =
+      lst.map(summon[Showable[A]].show).mkString("[", ", ", "]")
+
 @main def tryShowable =
   import Showables.*, Showable.*
   import ShowableGivenInstances.{*, given}
@@ -43,3 +49,4 @@ object ShowableGivenInstances:
   println(10.show())
   println("hello!".show())
   println(Student("mario", 201).show())
+  println(("a"::"b"::"c"::List()).show())

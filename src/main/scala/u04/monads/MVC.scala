@@ -24,11 +24,13 @@ package u04.monads
 
   val controller = for
     events <- mv(seq(reset(), get()), i => windowCreation(i.toString()))
-    _ <- seqN(events.map(_ match
+    _ <- seqN(
+      events.map:
         case "IncButton" => mv(seq(inc(), get()), i => toLabel(i.toString, "Label1"))
         case "DecButton" => mv(seq(dec(), get()), i => toLabel(i.toString, "Label1"))
         case "ResetButton" => mv(seq(reset(), get()), i => toLabel(i.toString, "Label1"))
-        case "QuitButton" => mv(nop(), _ => exec(sys.exit()))))
+        case "QuitButton" => mv(nop(), _ => exec(sys.exit()))
+    )
   yield ()
 
   controller.run((initialCounter(), initialWindow))
