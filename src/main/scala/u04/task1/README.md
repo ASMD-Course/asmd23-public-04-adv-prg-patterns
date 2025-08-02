@@ -19,7 +19,7 @@ operations :
     chain: GeneticSequence[A] => GeneticSequence[A]
 
 axioms :
-<    elements(dna(xs)) = xs
+    elements(dna(xs)) = xs
     elements(rna(xs)) = xs
     elements(rna()) = E
     elements(dna()) = E
