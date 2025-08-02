@@ -1,7 +1,5 @@
 # Task 2
 
-First define the ADT for Sequences
-
 Original ADT for Sequences:
 ```text
 type :
@@ -43,7 +41,6 @@ axioms :
     
   
 ```
-
 After asking to a LLM:
 
 ```text
@@ -89,5 +86,3 @@ axioms :
  
 ```
 
-
-Then starting by defining the Interface ADT and setting up the 
