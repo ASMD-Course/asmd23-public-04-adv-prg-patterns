@@ -106,6 +106,6 @@ def tryGeneticSequence(): Unit =
   import GeneticSequenceDSL.{*, given}
 
   val newTest = DNANucleotide.G + DNANucleotide.T + DNANucleotide.A + DNANucleotide.C
-  val newTest2 = RNANucleotide.A + RNANucleotide.U + RNANucleotide.C + RNANucleotide.G
+  val newTest2 = RNANucleotide.A + RNANucleotide.U + RNANucleotide.C + RNANucleotide.G 
 
 

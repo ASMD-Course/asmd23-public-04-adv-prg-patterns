@@ -38,8 +38,6 @@ axioms :
     
     foldLeft(empty, b, f) = b
     foldLeft(apply(x, xs), b, f) = foldLeft(xs, f(b, x), f)
-    
-  
 ```
 After asking to a LLM:
 

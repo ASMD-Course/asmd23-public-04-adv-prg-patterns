@@ -1,4 +1,4 @@
-package scala.u04.task1
+package scala.u04.task1.nucleotide
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should

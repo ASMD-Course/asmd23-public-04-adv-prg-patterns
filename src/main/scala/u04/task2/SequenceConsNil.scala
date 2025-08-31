@@ -17,14 +17,11 @@ object SequenceConsNil extends SequenceConstructor:
       case Nil() => Nil()
       case Cons(h, t) => Cons(f(h), t.map(f))
 
-    override def flatMap[B](f: A => SequenceADT[B]): SequenceImpl[B] =
-      def concat(s1: SequenceImpl[B], s2: => SequenceImpl[B]): SequenceImpl[B] = s1 match
-        case Nil() => s2
-        case Cons(h, t) => Cons(h, concat(t, s2))
-
-      this match
+    override def flatMap[B](f: A => SequenceADT[B]): SequenceImpl[B] = this match
         case Nil() => Nil()
-        case Cons(h, t) => concat(f(h).asInstanceOf[SequenceImpl[B]], t.flatMap(f))
+        case Cons(h, t) =>
+          val mappedHead = f(h).asInstanceOf[SequenceImpl[B]]
+          mappedHead.concat(t.flatMap(f))
 
     override def filter(f: A => Boolean): SequenceImpl[A] = this match
       case Nil() => Nil()
